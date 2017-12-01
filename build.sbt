@@ -1,5 +1,5 @@
 
-name := "Cinder"
+name := "Chaos"
 
 version := "1.0"
 

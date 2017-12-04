@@ -1,6 +1,6 @@
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
-import services.{DatabaseServiceImpl, FlywayServiceImpl}
+import services._
 import utils.Config
 
 import scala.concurrent.ExecutionContext
@@ -15,6 +15,8 @@ object Main extends App with Config {
   flywayService.migrateDatabaseSchema()
 
   val databaseService = new DatabaseServiceImpl(jdbcUrl, dbUser, dbPassword)
-
+  val accountsService = new AccountsServiceImpl(databaseService)
+  val oAuthClientsService = new OAuthClientsServiceImpl(databaseService, accountsService)
+  val oAuthAccessTokensService = new OAuthAccessTokensServiceImpl(databaseService, oAuthClientsService)
 
 }

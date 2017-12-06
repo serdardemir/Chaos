@@ -40,7 +40,11 @@ libraryDependencies ++= {
     "org.specs2" %% "specs2-core" % "3.8.9" % "test",
     "org.specs2" %% "specs2-mock" % "3.8.9",
     "com.typesafe.akka" %% "akka-http-testkit" % "10.0.0" % "test",
-    "org.apache.kafka" % "kafka_2.12" % "1.0.0"
+    "org.apache.kafka" % "kafka_2.12" % "1.0.0",
+
+    //Flink
+    "org.apache.flink" % "flink-core" % "1.2.0",
+    "org.apache.flink" % "flink-java" % "1.2.0"
   )
 }
 

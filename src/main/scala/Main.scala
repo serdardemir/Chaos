@@ -1,4 +1,5 @@
 import akka.actor.ActorSystem
+import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import http.HttpService
 import services.{CachingServiceImpl, KafkaIntegrationImpl, _}
@@ -23,7 +24,7 @@ object Main extends App with Config {
   val kafkaIntegration = new KafkaIntegrationImpl(kafkaBootstrapServers)
   val httpService = new HttpService(oAuthClientsService, oAuthAccessTokensService, accountsService, cacheService)
 
-
+  Http().bindAndHandle(httpService.routes, httpHost, httpPort)
 
 
 }
